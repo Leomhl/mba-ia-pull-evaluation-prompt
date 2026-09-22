@@ -51,12 +51,12 @@ class TestPrompts:
         system_prompt = prompt["system_prompt"]
 
         # The prompt itself is written in Portuguese, so the expected wording is too.
-        assert re.search(r"Você é um[ao]?\s+\w+", system_prompt), (
-            "The prompt does not define a persona in the 'Você é um...' form"
+        assert re.search(r"You are an?\s+\w+", system_prompt), (
+            "The prompt does not define a persona in the 'You are a...' form"
         )
 
         # The persona must be a concrete role, not a generic "assistant" as in v1.
-        roles = ["product manager", "product owner", "analista", "engenheiro"]
+        roles = ["product manager", "product owner", "product analyst"]
         found = [r for r in roles if r in system_prompt.lower()]
         assert found, (
             f"Persona is too generic; one of these roles was expected: {roles}"
@@ -89,13 +89,13 @@ class TestPrompts:
         system_prompt = prompt["system_prompt"]
         lower = system_prompt.lower()
 
-        assert "exemplo" in lower, "The prompt contains no example at all"
+        assert "example" in lower, "The prompt contains no example at all"
 
-        # Few-shot requires input/output pairs, not just the word "exemplo".
-        assert "entrada:" in lower, "The examples do not mark the Input"
-        assert "saída:" in lower, "The examples do not mark the Output"
+        # Few-shot requires input/output pairs, not just the word "example".
+        assert "input:" in lower, "The examples do not mark the Input"
+        assert "output:" in lower, "The examples do not mark the Output"
 
-        examples = re.findall(r"^\s*##\s*Exemplo\s+\d+", system_prompt, re.M)
+        examples = re.findall(r"^\s*##\s*Example\s+\d+", system_prompt, re.M)
         assert len(examples) >= 2, (
             f"Few-shot requires at least 2 examples, found: {len(examples)}"
         )
