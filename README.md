@@ -136,14 +136,20 @@ Métricas Base:
 
 ### LangSmith evidence
 
-| Item | Where |
-|---|---|
-| Published prompt (public) | <https://smith.langchain.com/prompts/bug_to_user_story_v2/40007940> |
-| Evaluation dataset (15 examples) | `prompt-optimization-challenge-resolved-eval` |
-| Traces for every run | project `prompt-optimization-challenge-resolved` |
+All links below are **public** — they open without a LangSmith account.
 
-Each of the 15 examples produces one generation trace plus three judge traces,
-so the full run is traceable end to end in the LangSmith dashboard.
+| Evidence | Public link |
+|---|---|
+| Optimised prompt v2 (public on the Hub) | <https://smith.langchain.com/hub/handle-setup/bug_to_user_story_v2> |
+| Evaluation dataset, 15 examples | <https://smith.langchain.com/public/59294557-7a86-408a-b260-2c93701f1627/d> |
+| Detailed trace — example 1 | <https://smith.langchain.com/public/f0d4a133-4f7f-4e16-b8bf-7aa70e59441d/r> |
+| Detailed trace — example 2 | <https://smith.langchain.com/public/2d62de77-df16-42c6-8ceb-d1e883db4912/r> |
+| Detailed trace — example 3 | <https://smith.langchain.com/public/4faa4644-0162-4869-a149-102d1be6bc70/r> |
+
+Each of the 15 examples produces one generation trace plus three judge traces
+(F1, Clarity, Precision), so every score in the table above is traceable back to
+the exact prompt and completion that produced it. The three links above expose
+that detail without requiring access to the workspace.
 
 ### v1 vs v2 comparison
 
